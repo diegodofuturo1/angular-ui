@@ -1,0 +1,6 @@
+<ul class="card-container">
+  <li *ngFor="let item of items">
+    <app-home-item [title]="item.title" [description]="item.description" [router]="item.router">
+    </app-home-item>
+  </li>
+</ul>

@@ -1,0 +1,28 @@
+.card {
+  background-color: #434343;
+  padding: 20px;
+  margin: 10px;
+  cursor: pointer;
+  border: 1px solid #434343;
+  border-left: 15px solid #595959;
+  width: 300px;
+  min-height: 100px;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+}
