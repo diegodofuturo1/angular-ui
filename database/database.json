@@ -5,9 +5,51 @@
       "color": "gray"
     }
   ],
-  "teachers": [],
-  "students": [],
-  "subjects": [],
+  "teachers": [
+    {
+      "name": "Fulano",
+      "salary": 120000,
+      "matters": [],
+      "rating": 5
+    }
+  ],
+  "students": [
+    {
+      "id": "51e82ead-7e61-4c8d-9826-6fee30957b65",
+      "name": "Ana",
+      "ra": "18273548276",
+      "age": "26",
+      "classroms": []
+    },
+    {
+      "id": "d8248211-3340-41f7-921b-3628da6b633e",
+      "name": "Beto",
+      "ra": "27635289090",
+      "age": "29",
+      "classroms": []
+    },
+    {
+      "id": "0f39a3b0-ea5f-4ee6-96de-59dad2c048ab",
+      "name": "Carlos",
+      "ra": "72898839765",
+      "age": "20",
+      "classroms": []
+    },
+    {
+      "id": "a6f5696f-c87a-4231-bf53-dc3a0e8db8f3",
+      "name": "Diego",
+      "ra": "23792764252",
+      "age": "29",
+      "classroms": []
+    }
+  ],
+  "matters": [
+    {
+      "title": "",
+      "description": "",
+      "teachers": []
+    }
+  ],
   "classrooms": [],
   "colors": [
     {

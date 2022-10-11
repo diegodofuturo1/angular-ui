@@ -1,1 +1,54 @@
-<p>student works!</p>
+<div class="container">
+  <div class="form-container">
+    <app-home-item [title]="'Alunos'" [description]="'Gerencie os alunos, verifique suas notas, seu desempenho e expulsem eles caso necessário!'"></app-home-item>
+    <form>
+      <img *ngIf="image" class="image" src={{image}} alt="random">
+      <div class="input-container" *ngIf="id">
+        <input type="text" class="input" [(ngModel)]="id" placeholder="Id" name="id" id='id' required autocomplete="off" disabled="" [ngStyle]="{ 'font-size': '17px' }" />
+        <label for="name" class="label">Id</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="name" placeholder="Name" name="name" id='name' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="name" class="label">Nome</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="age" placeholder="Age" name="age" id='age' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="name" class="label">Idade</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="ra" placeholder="RA" name="ra" id='ra' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="name" class="label">RA</label>
+      </div>
+
+      <div class="button-container">
+        <button *ngIf="mode === 'new' || mode === 'edit'" class="button" (click)="save()">Salvar</button>
+        <button *ngIf="mode === 'selected'" class="button" (click)="mode = 'edit'">Editar</button>
+        <button *ngIf="mode === 'selected' || mode === 'delete'" class="button" (click)="remove()">Expulsar</button>
+        <button *ngIf="mode !== 'new'" class="button" (click)="close()">Fechar</button>
+      </div>
+      <app-notification *ngIf="notification" [type]="notification.type" [title]="notification.title" [message]="notification.message" (click)="notification = undefined"></app-notification>
+    </form>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <tr>
+        <th colspan="4" class="table-title">
+          Lista de Alunos
+        </th>
+      </tr>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Idade</th>
+        <th>RA</th>
+      </tr>
+      <tr class="row" *ngFor="let student of students" (click)="load(student)">
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.ra}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
