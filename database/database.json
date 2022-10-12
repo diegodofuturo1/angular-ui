@@ -26,6 +26,13 @@
       "salary": 300000,
       "rating": 5,
       "matters": []
+    },
+    {
+      "id": "64055378-4e13-46c9-b3d4-3461cadac27f",
+      "name": "Girafales",
+      "salary": 95000,
+      "rating": 3,
+      "matters": []
     }
   ],
   "students": [
@@ -55,6 +62,27 @@
       "name": "Diego",
       "ra": "23792764252",
       "age": "29",
+      "classroms": []
+    },
+    {
+      "id": "ebae3bea-a344-41fe-a2ea-3fe46c9010a3",
+      "name": "Ellen",
+      "ra": "72899927366",
+      "age": "22",
+      "classroms": []
+    },
+    {
+      "id": "1393f4fc-1a08-4ea9-9832-69421267e3ba",
+      "name": "Fabio",
+      "ra": "82983776555",
+      "age": "18",
+      "classroms": []
+    },
+    {
+      "id": "875e7078-37e6-4fea-a9c8-6807430da074",
+      "name": "Gustavo",
+      "ra": "87265189002",
+      "age": "19",
       "classroms": []
     }
   ],
@@ -98,6 +126,12 @@
       "id": "a0185c75-54e2-40c6-95d0-23c9c0d4923d",
       "teacherId": "60ec355f-4298-48bc-8ed6-ac4e27ad8237",
       "subjectId": "94ce6f55-cfb5-472f-96f4-dcf641737163",
+      "students": []
+    },
+    {
+      "id": "f9dc2544-2460-41f4-b046-fdb136376dd5",
+      "teacherId": "64055378-4e13-46c9-b3d4-3461cadac27f",
+      "subjectId": "80e4cdbe-1295-4411-90c5-7e9d8196c2d8",
       "students": []
     }
   ],

@@ -29,26 +29,5 @@
       <app-notification *ngIf="notification" [type]="notification.type" [title]="notification.title" [message]="notification.message" (click)="notification = undefined"></app-notification>
     </form>
   </div>
-
-  <div class="table-container">
-    <table>
-      <tr>
-        <th colspan="4" class="table-title">
-          Lista de Alunos
-        </th>
-      </tr>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Idade</th>
-        <th>RA</th>
-      </tr>
-      <tr class="row" *ngFor="let student of students" (click)="load(student)">
-        <td>{{student.id}}</td>
-        <td>{{student.name}}</td>
-        <td>{{student.age}}</td>
-        <td>{{student.ra}}</td>
-      </tr>
-    </table>
-  </div>
+  <app-table (selected)="load($event)" [title]="'Lista de Alunos'" [columns]="['Id' ,'Name' ,'RA' ,'Idade']" [data]="students"></app-table>
 </div>

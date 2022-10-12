@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th colspan="4" class="table-title">
+      {{title}}
+    </th>
+  </tr>
+  <tr>
+    <th *ngFor="let column of columns">{{column}}</th>
+  </tr>
+  <tr class="row" *ngFor="let row of dataSource" (click)="emit(row)">
+    <td *ngFor="let cell of row">{{cell.value}}</td>
+  </tr>
+</table>

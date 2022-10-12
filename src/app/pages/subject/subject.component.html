@@ -30,25 +30,5 @@
     </form>
   </div>
 
-  <div class="table-container">
-    <table>
-      <tr>
-        <th colspan="4" class="table-title">
-          Lista de Matérias
-        </th>
-      </tr>
-      <tr>
-        <th>Id</th>
-        <th>Título</th>
-        <th>Descrição</th>
-        <th>Duração</th>
-      </tr>
-      <tr class="row" *ngFor="let subject of subjects" (click)="load(subject)">
-        <td>{{subject.id}}</td>
-        <td>{{subject.title}}</td>
-        <td>{{subject.description}}</td>
-        <td>{{subject.duration}}</td>
-      </tr>
-    </table>
-  </div>
+  <app-table (selected)="load($event)" [title]="'Lista de Matérias'" [columns]="['Id' ,'Título' ,'Descrição' ,'Duração']" [data]="subjects"></app-table>
 </div>

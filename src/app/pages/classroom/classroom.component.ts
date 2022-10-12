@@ -168,11 +168,5 @@ export class ClassroomComponent implements OnInit {
     });
   }
 
-  modal = false;
-
-  modalVisibility() {
-    this.modal = !this.modal;
-  }
-
   ngOnInit(): void {}
 }

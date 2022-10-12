@@ -30,25 +30,5 @@
     </form>
   </div>
 
-  <div class="table-container">
-    <table>
-      <tr>
-        <th colspan="4" class="table-title">
-          Lista de Professores
-        </th>
-      </tr>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Salário</th>
-        <th>Avaliação</th>
-      </tr>
-      <tr class="row" *ngFor="let teacher of teachers" (click)="load(teacher)">
-        <td>{{teacher.id}}</td>
-        <td>{{teacher.name}}</td>
-        <td>{{teacher.salary}}</td>
-        <td>{{teacher.rating}}/5</td>
-      </tr>
-    </table>
-  </div>
+  <app-table (selected)="load($event)" [title]="'Lista de Professores'" [columns]="['Id' ,'Name' ,'Salário' ,'Avaliação']" [data]="teachers"></app-table>
 </div>
