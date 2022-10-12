@@ -48,7 +48,7 @@
       "name": "Ana",
       "ra": "18273548276",
       "age": "26",
-      "classroms": []
+      "classroomId": "51e82ead-7e61-4c8d-9826-6fee30957b65"
     },
     {
       "id": "d8248211-3340-41f7-921b-3628da6b633e",
@@ -62,7 +62,7 @@
       "name": "Carlos",
       "ra": "72898839765",
       "age": "20",
-      "classroms": []
+      "classroomId": "51e82ead-7e61-4c8d-9826-6fee30957b65"
     },
     {
       "id": "a6f5696f-c87a-4231-bf53-dc3a0e8db8f3",
@@ -90,7 +90,7 @@
       "name": "Gustavo",
       "ra": "87265189002",
       "age": "19",
-      "classroms": []
+      "classroomId": "f9dc2544-2460-41f4-b046-fdb136376dd5"
     }
   ],
   "subjects": [

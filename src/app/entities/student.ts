@@ -6,6 +6,6 @@ export class Student implements Entity {
     public name: string,
     public ra: string,
     public age: string,
-    public classroms: string[]
+    public classroomId: string
   ) {}
 }

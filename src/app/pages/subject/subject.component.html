@@ -2,7 +2,7 @@
   <div class="form-container">
     <app-home-item [title]="'Matérias'" [description]="'Crie novos cursos ou expanda os existentes!'"></app-home-item>
     <form>
-      <img *ngIf="image" class="image" src={{image}} alt="random">
+      <!-- <img *ngIf="image" class="image" src={{image}} alt="random"> -->
       <div class="input-container" *ngIf="id">
         <input type="text" class="input" [(ngModel)]="id" placeholder="Id" name="id" id='id' required autocomplete="off" disabled="" [ngStyle]="{ 'font-size': '17px' }" />
         <label for="id" class="label">Id</label>

@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from 'src/app/entities/student';
 import { Notification } from 'src/app/entities/notification';
 import { EntityService } from 'src/app/services/entity.service';
+import { Classroom } from 'src/app/entities/classroom';
+import { Teacher } from 'src/app/entities/teacher';
+import { Subject } from 'src/app/entities/subject';
+
+interface ClassroomDto extends Classroom {
+  teacherName: string;
+  subjectTitle: string;
+}
 
 @Component({
   selector: 'app-student',
@@ -15,12 +23,32 @@ export class StudentComponent implements OnInit {
   age: string = '';
   image: string = '';
   students: Student[] = [];
+  classroomId: string = '';
+  classrooms: ClassroomDto[] = [];
   mode: 'new' | 'selected' | 'edit' | 'delete' = 'new';
   notification?: Notification;
 
   constructor(private service: EntityService<Student>) {
+    let _classrooms: Classroom[] = [];
+    let teachers: Teacher[] = [];
+    let subjects: Subject[] = [];
+
+    const observables = service.getAll();
+    observables.classrooms.subscribe((result) => (_classrooms = result));
+    observables.teachers.subscribe((result) => (teachers = result));
+    observables.subjects.subscribe((result) => (subjects = result));
+    observables.students.subscribe((result) => (this.students = result));
+    const loadSelect = () => {
+      this.classrooms = _classrooms.map((classroom) => ({
+        ...classroom,
+        subjectTitle:
+          subjects.find((s) => s.id == classroom.subjectId)?.title ?? '',
+        teacherName:
+          teachers.find((t) => t.id == classroom.teacherId)?.name ?? '',
+      }));
+    };
+    setTimeout(loadSelect, 200);
     service.table('students');
-    this.get();
   }
 
   get() {
@@ -33,6 +61,7 @@ export class StudentComponent implements OnInit {
     this.name = student.name;
     this.ra = student.ra;
     this.age = student.age;
+    this.classroomId = student.classroomId;
     this.mode = 'selected';
     this.image = 'https://joeschmoe.io/api/v1/random';
   }
@@ -42,6 +71,7 @@ export class StudentComponent implements OnInit {
     this.name = '';
     this.ra = '';
     this.age = '';
+    this.classroomId = '';
     this.mode = 'new';
     this.image = '';
     this.notification = undefined;
@@ -90,7 +120,7 @@ export class StudentComponent implements OnInit {
     const id = this.mode === 'new' ? '1' : this.id;
     const { name, age, ra } = this;
 
-    return new Student(id, name, ra, age, []);
+    return new Student(id, name, ra, age, this.classroomId);
   }
 
   save() {

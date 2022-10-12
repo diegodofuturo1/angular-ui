@@ -2,7 +2,7 @@
   <div class="form-container">
     <app-home-item [title]="'Alunos'" [description]="'Gerencie os alunos, verifique suas notas, seu desempenho e expulsem eles caso necessário!'"></app-home-item>
     <form>
-      <img *ngIf="image" class="image" src={{image}} alt="random">
+      <!-- <img *ngIf="image" class="image" src={{image}} alt="random"> -->
       <div class="input-container" *ngIf="id">
         <input type="text" class="input" [(ngModel)]="id" placeholder="Id" name="id" id='id' required autocomplete="off" disabled="" [ngStyle]="{ 'font-size': '17px' }" />
         <label for="name" class="label">Id</label>
@@ -20,6 +20,17 @@
         <label for="name" class="label">RA</label>
       </div>
 
+      <div class="select-container">
+        <select name="classrooms" id="classrooms-select" [(ngModel)]="classroomId">
+          <option *ngFor="let classroom of classrooms" value="{{classroom.id}}">
+            <div>
+              <div>{{classroom.subjectTitle}} com {{classroom.teacherName}}</div>
+            </div>
+          </option>
+        </select>
+        <label for="classrooms-select" class="label">Aulas</label>
+      </div>
+
       <div class="button-container">
         <button *ngIf="mode === 'new' || mode === 'edit'" class="button" (click)="save()">Salvar</button>
         <button *ngIf="mode === 'selected'" class="button" (click)="mode = 'edit'">Editar</button>
@@ -29,5 +40,5 @@
       <app-notification *ngIf="notification" [type]="notification.type" [title]="notification.title" [message]="notification.message" (click)="notification = undefined"></app-notification>
     </form>
   </div>
-  <app-table (selected)="load($event)" [title]="'Lista de Alunos'" [columns]="['Id' ,'Name' ,'RA' ,'Idade']" [data]="students"></app-table>
+  <app-table (selected)="load($event)" [title]="'Lista de Alunos'" [columns]="['Id' ,'Name' ,'RA' ,'Idade']" [data]="students" [ignoreColumns]="['classroomId']"></app-table>
 </div>

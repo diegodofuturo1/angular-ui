@@ -2,6 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Entity } from '../entities/entity';
 import * as uuid from 'uuid';
+import { Student } from '../entities/student';
+import { Teacher } from '../entities/teacher';
+import { Subject } from '../entities/subject';
+import { Classroom } from '../entities/classroom';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +17,7 @@ export class EntityService<T extends Entity> {
 
   table(table: string) {
     this.url = `http://localhost:3000/${table}`;
+    return this;
   }
 
   get() {
@@ -34,5 +39,16 @@ export class EntityService<T extends Entity> {
 
   delete(user: T) {
     return this.http.delete<T>(`${this.url}/${user.id}`);
+  }
+
+  getAll() {
+    const url: string = 'http://localhost:3000/';
+
+    return {
+      students: this.http.get<Student[]>(url + 'students'),
+      teachers: this.http.get<Teacher[]>(url + 'teachers'),
+      subjects: this.http.get<Subject[]>(url + 'subjects'),
+      classrooms: this.http.get<Classroom[]>(url + 'classrooms'),
+    };
   }
 }
