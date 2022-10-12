@@ -7,10 +7,25 @@
   ],
   "teachers": [
     {
-      "name": "Fulano",
-      "salary": 120000,
-      "matters": [],
-      "rating": 5
+      "id": "15aedfa2-8529-4b5d-bf39-93de479b88e3",
+      "name": "Guanabara",
+      "salary": 60000,
+      "rating": 4,
+      "matters": []
+    },
+    {
+      "id": "75a2521d-c0e4-474c-be08-1eb266836185",
+      "name": "Fábio Aquita",
+      "salary": 200000,
+      "rating": 5,
+      "matters": []
+    },
+    {
+      "id": "60ec355f-4298-48bc-8ed6-ac4e27ad8237",
+      "name": "AllMight",
+      "salary": 300000,
+      "rating": 5,
+      "matters": []
     }
   ],
   "students": [
@@ -43,14 +58,49 @@
       "classroms": []
     }
   ],
-  "matters": [
+  "subjects": [
     {
-      "title": "",
-      "description": "",
+      "id": "80e4cdbe-1295-4411-90c5-7e9d8196c2d8",
+      "title": "Econocomédia",
+      "description": "Oferta e Demanda do Humor!",
+      "duration": 6,
+      "teachers": []
+    },
+    {
+      "id": "f1a5a5c8-7b6a-441c-9e90-fc50c815d5fa",
+      "title": "Defesa Mágica",
+      "description": "Defesa contra artes das trevas",
+      "duration": 4,
+      "teachers": []
+    },
+    {
+      "id": "94ce6f55-cfb5-472f-96f4-dcf641737163",
+      "title": "Super Herói",
+      "description": "Curso completo de super herói teórico",
+      "duration": 8,
       "teachers": []
     }
   ],
-  "classrooms": [],
+  "classrooms": [
+    {
+      "id": "51e82ead-7e61-4c8d-9826-6fee30957b65",
+      "teacherId": "75a2521d-c0e4-474c-be08-1eb266836185",
+      "subjectId": "f1a5a5c8-7b6a-441c-9e90-fc50c815d5fa",
+      "students": []
+    },
+    {
+      "id": "1eed41cf-ed61-4164-b147-40668a30667d",
+      "teacherId": "15aedfa2-8529-4b5d-bf39-93de479b88e3",
+      "subjectId": "80e4cdbe-1295-4411-90c5-7e9d8196c2d8",
+      "students": []
+    },
+    {
+      "id": "a0185c75-54e2-40c6-95d0-23c9c0d4923d",
+      "teacherId": "60ec355f-4298-48bc-8ed6-ac4e27ad8237",
+      "subjectId": "94ce6f55-cfb5-472f-96f4-dcf641737163",
+      "students": []
+    }
+  ],
   "colors": [
     {
       "id": "red",

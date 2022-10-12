@@ -1,1 +1,54 @@
-<p>teacher works!</p>
+<div class="container">
+  <div class="form-container">
+    <app-home-item [title]="'Professores'" [description]="'Contrate, gerencie e demita professores!'"></app-home-item>
+    <form>
+      <img *ngIf="image" class="image" src={{image}} alt="random">
+      <div class="input-container" *ngIf="id">
+        <input type="text" class="input" [(ngModel)]="id" placeholder="Id" name="id" id='id' required autocomplete="off" disabled="" [ngStyle]="{ 'font-size': '17px' }" />
+        <label for="id" class="label">Id</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="name" placeholder="Nome" name="name" id='name' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="name" class="label">Nome</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="salary" placeholder="Salário" name="salary" id='salary' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="salary" class="label">Salário</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="rating" placeholder="Avaliação" name="rating" id='rating' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="rating" class="label">Avaliação</label>
+      </div>
+
+      <div class="button-container">
+        <button *ngIf="mode === 'new' || mode === 'edit'" class="button" (click)="save()">Salvar</button>
+        <button *ngIf="mode === 'selected'" class="button" (click)="mode = 'edit'">Editar</button>
+        <button *ngIf="mode === 'selected' || mode === 'delete'" class="button" (click)="remove()">Expulsar</button>
+        <button *ngIf="mode !== 'new'" class="button" (click)="close()">Fechar</button>
+      </div>
+      <app-notification *ngIf="notification" [type]="notification.type" [title]="notification.title" [message]="notification.message" (click)="notification = undefined"></app-notification>
+    </form>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <tr>
+        <th colspan="4" class="table-title">
+          Lista de Professores
+        </th>
+      </tr>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Salário</th>
+        <th>Avaliação</th>
+      </tr>
+      <tr class="row" *ngFor="let teacher of teachers" (click)="load(teacher)">
+        <td>{{teacher.id}}</td>
+        <td>{{teacher.name}}</td>
+        <td>{{teacher.salary}}</td>
+        <td>{{teacher.rating}}/5</td>
+      </tr>
+    </table>
+  </div>
+</div>

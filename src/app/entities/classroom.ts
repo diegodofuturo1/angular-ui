@@ -4,7 +4,7 @@ export class Classroom implements Entity {
   constructor(
     public id: string,
     public teacherId: string,
-    public matterId: string,
+    public subjectId: string,
     public students: string[]
   ) {}
 }

@@ -1,1 +1,55 @@
-<p>classroom works!</p>
+<div class="container">
+  <div class="form-container">
+    <app-home-item [title]="'Aulas'" [description]="'Gerencie os alunos, verifique suas notas, seu desempenho e expulsem eles caso necessário!'"></app-home-item>
+    <form>
+      <img *ngIf="image" class="image" src={{image}} alt="random">
+
+      <div class="input-container" *ngIf="id">
+        <input type="text" class="input" [(ngModel)]="id" placeholder="Id" name="id" id='id' required autocomplete="off" disabled="" [ngStyle]="{ 'font-size': '17px' }" />
+        <label for="id" class="label">Id</label>
+      </div>
+
+      <div class="select-container">
+        <select name="teachers" id="teachers-select" [(ngModel)]="teacherId">
+          <option *ngFor="let teacher of teachers" value="{{teacher.id}}">{{teacher.name}}</option>
+        </select>
+        <label for="teachers-select" class="label">Professor</label>
+      </div>
+
+      <div class="select-container">
+        <select name="subjects" id="subjects-select" [(ngModel)]="subjectId">
+          <option *ngFor="let subject of subjects" value="{{subject.id}}">{{subject.title}}</option>
+        </select>
+        <label for="subjects-select" class="label">Matéria</label>
+      </div>
+
+      <div class="button-container">
+        <button *ngIf="mode === 'new' || mode === 'edit'" class="button" (click)="save()">Salvar</button>
+        <button *ngIf="mode === 'selected'" class="button" (click)="mode = 'edit'">Editar</button>
+        <button *ngIf="mode === 'selected' || mode === 'delete'" class="button" (click)="remove()">Cancelar</button>
+        <button *ngIf="mode !== 'new'" class="button" (click)="close()">Fechar</button>
+      </div>
+      <app-notification *ngIf="notification" [type]="notification.type" [title]="notification.title" [message]="notification.message" (click)="notification = undefined"></app-notification>
+    </form>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <tr>
+        <th colspan="3" class="table-title">
+          Lista de Aulas
+        </th>
+      </tr>
+      <tr>
+        <th>Id</th>
+        <th>Professor</th>
+        <th>Matéria</th>
+      </tr>
+      <tr class="row" *ngFor="let classroom of classrooms" (click)="load(classroom)">
+        <td>{{classroom.id}}</td>
+        <td>{{classroom.teacherName}}</td>
+        <td>{{classroom.subjectTitle}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,1 +1,54 @@
-<p>subject works!</p>
+<div class="container">
+  <div class="form-container">
+    <app-home-item [title]="'Matérias'" [description]="'Crie novos cursos ou expanda os existentes!'"></app-home-item>
+    <form>
+      <img *ngIf="image" class="image" src={{image}} alt="random">
+      <div class="input-container" *ngIf="id">
+        <input type="text" class="input" [(ngModel)]="id" placeholder="Id" name="id" id='id' required autocomplete="off" disabled="" [ngStyle]="{ 'font-size': '17px' }" />
+        <label for="id" class="label">Id</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="title" placeholder="Título" name="title" id='title' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="title" class="label">Título</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="description" placeholder="Descrição" name="description" id='description' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="description" class="label">Descrição</label>
+      </div>
+      <div class="input-container">
+        <input type="text" class="input" [(ngModel)]="duration" placeholder="Duração" name="duration" id='duration' required autocomplete="off" disabled="{{mode==='delete' || mode==='selected'}}" />
+        <label for="duration" class="label">Duração</label>
+      </div>
+
+      <div class="button-container">
+        <button *ngIf="mode === 'new' || mode === 'edit'" class="button" (click)="save()">Salvar</button>
+        <button *ngIf="mode === 'selected'" class="button" (click)="mode = 'edit'">Editar</button>
+        <button *ngIf="mode === 'selected' || mode === 'delete'" class="button" (click)="remove()">Encerrar</button>
+        <button *ngIf="mode !== 'new'" class="button" (click)="close()">Fechar</button>
+      </div>
+      <app-notification *ngIf="notification" [type]="notification.type" [title]="notification.title" [message]="notification.message" (click)="notification = undefined"></app-notification>
+    </form>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <tr>
+        <th colspan="4" class="table-title">
+          Lista de Matérias
+        </th>
+      </tr>
+      <tr>
+        <th>Id</th>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Duração</th>
+      </tr>
+      <tr class="row" *ngFor="let subject of subjects" (click)="load(subject)">
+        <td>{{subject.id}}</td>
+        <td>{{subject.title}}</td>
+        <td>{{subject.description}}</td>
+        <td>{{subject.duration}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
